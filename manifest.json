@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "GradeScope-Importer",
+    "version": "0.1",
+    "content_scripts": [
+        {
+          "matches": [
+            "https://www.gradescope.com/*", "http://www.gradescope.com/*"
+          ],
+          "js": ["jquery-3.3.1.min.js", "content.js"]
+        }
+      ],
+    "background": {
+        "scripts": ["background.js"]
+      },
+    "browser_action": {
+        "default_icon": "icon.png"
+      }
+  }
