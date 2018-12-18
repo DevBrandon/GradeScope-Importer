@@ -8,3 +8,10 @@ chrome.browserAction.onClicked.addListener(function(tab) {
       chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_browser_action"});
     });
   });
+
+//    "permissions": [
+//     "tabs", "<all_urls>"
+// ],
+
+// "default_popup": "popup.html",
+// "default_title": "GradeScope-Importer"

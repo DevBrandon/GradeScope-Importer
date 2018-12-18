@@ -7,7 +7,7 @@
           "matches": [
             "https://www.gradescope.com/*", "http://www.gradescope.com/*"
           ],
-          "js": ["jquery-3.3.1.min.js", "content.js"]
+          "js": ["jquery-3.3.1.min.js", "xlsx.full.min.js", "FileSaver.min.js","content.js"]
         }
       ],
     "background": {
@@ -21,4 +21,5 @@
     "browser_action": {
         "default_icon": "icons/favicon.png"
       }
+      
   }
