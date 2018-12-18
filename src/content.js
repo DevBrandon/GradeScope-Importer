@@ -10,6 +10,7 @@ chrome.runtime.onMessage.addListener(
 
         // alert(values);
 
+        //new File([file], file.name)
         var wb = XLSX.utils.book_new();
         wb.Props = {
                 Title: "SheetJS Tutorial",
@@ -37,9 +38,9 @@ chrome.runtime.onMessage.addListener(
                 return buf;
                 
         }
-        alert(values);
+        //alert(values);
         // $("#clickme").click(function(){
-                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'test.xlsx');
+        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'test.xlsx');
         // });
       }
     }
