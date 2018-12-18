@@ -8,7 +8,7 @@ Good read if you've never done a chrome extention before: https://developer.chro
 - [ ] Make GUI for user to input weights
 - [ ] Allow user to save inputted weights
   - https://developer.chrome.com/extensions/storage
-//- [ ] Allow users to download as CSV
+- ~~[ ] Allow users to download as CSV~~ May not need since we can download as Excel
 - [ ] Allow users to import to Google Sheet
 - [ ] Support for multiple classes
 - [ ] Option Page
