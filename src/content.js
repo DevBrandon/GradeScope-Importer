@@ -20,6 +20,8 @@ function change_workbook(wb) {
 }
 
 // listener to call background.js
+// TODO: remove the test method and replace with a dynamic template
+// during wb creation
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
       if( request.message === "clicked_browser_action" ) {
