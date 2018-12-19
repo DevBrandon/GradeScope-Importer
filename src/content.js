@@ -25,7 +25,12 @@ function change_workbook(wb) {
     
     // TODO: add a switch statement or control method
     // that decides which column the grade should go in
-    ws["C" + (8 + counter)] = {
+    var column = "F";
+          if (assignment.includes("NP"))      { column = "E" }
+    else  if (assignment.includes("HW"))      { column = "C" }
+    else  if (assignment.includes("Midterm")) { column = "G" }
+    console.log(column);
+    ws[column + (8 + counter)] = {
       t: 's',
       v: grade
     };
