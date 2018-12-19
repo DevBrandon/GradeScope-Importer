@@ -6,17 +6,29 @@ function change_workbook(wb) {
   $("table > tbody > tr").each(function () {
       //alert($(this).find('th').eq(0).text() + " " + $(this).find('td').eq(0).text() + " " + $(this).find('td').eq(1).text() );
       values.push([$(this).find('th').eq(0).text()
-      ,$(this).find('td').eq(0).text()])
+      ,$(this).find('td').eq(0).text()]);
   });
   // get the first worksheet
   var ws_name = wb.SheetNames[0];
   var ws = wb.Sheets[ws_name];
 
-  // Change cell A1 to the text "HI"
-  ws["C8"] = {
-    t: 's', // <-- t: 's' indicates the cell is a text cell
-    v: values[0]//"100" // <-- v holds the value
-  };
+  // assign the values in the wb to the 
+  // respective classes and grades
+  values.forEach(function(pair, counter) {
+    var assignment = pair[0];
+    var grade = pair[1];
+    ws["B" + (8 + counter)] = {
+      t: 's', // t: 's' indicates the cell is a text cell
+      v: assignment // v: holds the desired value
+    };
+    
+    // TODO: add a switch statement or control method
+    // that decides which column the grade should go in
+    ws["C" + (8 + counter)] = {
+      t: 's',
+      v: grade
+    };
+  });
 }
 
 // listener to call background.js
