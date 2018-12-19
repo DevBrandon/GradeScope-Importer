@@ -16,7 +16,8 @@ function change_workbook(wb) {
   // respective classes and grades
   values.forEach(function(pair, counter) {
     var assignment = pair[0];
-    var grade = pair[1];
+    var grade_pair = pair[1].split("/");
+    var grade = grade_pair.length === 1 ? "" : parseInt(grade_pair[0], 10)/parseInt(grade_pair[1], 10);
     ws["B" + (8 + counter)] = {
       t: 's', // t: 's' indicates the cell is a text cell
       v: assignment // v: holds the desired value
