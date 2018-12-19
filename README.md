@@ -8,3 +8,6 @@ This extension allows you to quickly get all you grades, add weights and put it 
 ## Website: https://devbrandon.github.io/GradeScope-Importer/
 
 ## Talk to us on [discord](https://discord.gg/r2bcHVG)! Chat about wanted features or issues.
+
+## Screenshots
+<img align="center" src="https://github.com/DevBrandon/GradeScope-Importer/blob/master/src/icons/screenshot.png"/>
