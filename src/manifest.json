@@ -20,6 +20,12 @@
     },
     "browser_action": {
         "default_icon": "icons/favicon.png"
-      }
+      },
+    "web_accessible_resources": [
+        "templates/*"
+    ],
+    "permissions": [
+      "downloads"
+    ]
       
   }
