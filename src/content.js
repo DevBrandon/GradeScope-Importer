@@ -1,3 +1,4 @@
+//this is the method used to create the wb file and populate it
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
       if( request.message === "clicked_browser_action" ) {
