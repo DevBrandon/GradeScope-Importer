@@ -1,7 +1,9 @@
 
 // main method for this file
 // Will read data from the html website and write it to the workbook
-function change_workbook(wb) {
+// @param wb : the input workbook to be edited that is preset with the categories
+// @param list : the list of the different categories in order
+function create_wb(wb, list) {
   var values = new Array(); 
   $("table > tbody > tr").each(function () {
       //alert($(this).find('th').eq(0).text() + " " + $(this).find('td').eq(0).text() + " " + $(this).find('td').eq(1).text() );
@@ -11,6 +13,9 @@ function change_workbook(wb) {
   // get the first worksheet
   var ws_name = wb.SheetNames[0];
   var ws = wb.Sheets[ws_name];
+
+  //Creating the categories to have their assignements added next
+  createCategories(ws, list);
 
   // assign the values in the wb to the 
   // respective classes and grades
@@ -25,16 +30,61 @@ function change_workbook(wb) {
     
     // TODO: add a switch statement or control method
     // that decides which column the grade should go in
-    var column = "F";
-          if (assignment.includes("NP"))      { column = "E" }
-    else  if (assignment.includes("HW"))      { column = "C" }
-    else  if (assignment.includes("Midterm")) { column = "G" }
-    console.log(column);
+    var column = findMatchIncludesCategories(assignment, list);
+    console.log(assignment + " " + column);
     ws[column + (8 + counter)] = {
       t: 's',
       v: grade
     };
   });
+}
+
+// compares the ele to each elements in the list and sees if
+// the element is included within an element of the list
+// if it is, return true, otherwise false
+// all inputs are lowercased before the comparison
+// @param ele: the element to check if it has the list elements in it
+// @param list: the elements to check if they are in ele. 
+//  These have to be extracted from the pair list
+// @return the letter of the column to put the ele in.
+//  If no element in list is in ele then the column is the last column
+function findMatchIncludesCategories(ele, list){
+  ele = ele.toLowerCase();
+  var column = -1;
+  list.some(function(pair, counterPair) {
+    return pair[0].some(function(name) {
+      name = name.toLowerCase();
+      if (ele.includes(name) || name === "unknown"){
+        column = String.fromCharCode('C'.charCodeAt() + counterPair);
+        return true;
+      };
+      return false;
+    });
+  });
+
+  return column;
+}
+
+// This function creates the categories that are in the wb
+// This assigns the category names to the wb as well as the weights
+function createCategories(ws, list){
+  list.forEach(function(pair, counter){
+    var name = pair[0][0];
+    var weight = pair[1];
+    //weight = (weight === 0.0 ? "" : weight);
+    var column = String.fromCharCode('C'.charCodeAt() + counter);
+    console.log(name + " " + column);
+    ws[column + "6"] = {
+      t: 's',
+      v: name
+    };
+    ws[column + "7"] = {
+      t: 's',
+      v: weight
+    };
+
+  });
+  
 }
 
 // listener to call background.js
@@ -54,13 +104,23 @@ chrome.runtime.onMessage.addListener(
           req.onload = function(e) {
             var data = new Uint8Array(req.response);
             var wb = XLSX.read(data, {type:"array"});
-            test(wb);
+            var categories = [
+              [["Homework", "HW", "NP"], 0.1],
+              [["Essay"], 0.1],
+              [["Quiz"], 0.15],
+              [["Project"], 0.15],
+              [["Mid-Term", "Midterm", "Mid-Term Exam", "Midterm Exam"], 0.2],
+              [["Final", "Final Exam"], 0.3],
+              [["Unknown", "Other"], 0.0]
+            ];
+            test(wb, categories);
           }
 
-          function test(wb){
+
+          function test(wb, list){
             //console.log(wb);
             //var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
-            change_workbook(wb);
+            create_wb(wb, list);
             XLSX.writeFile(wb, "GradeScope-Importer.xlsx");
             //saveAs(new Blob([s2ab(wb)],{type:"application/octet-stream"}), 'test.xlsx');
           }
