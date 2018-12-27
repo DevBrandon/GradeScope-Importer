@@ -22,7 +22,7 @@ function create_wb(wb, list) {
   values.forEach(function(pair, counter) {
     var assignment = pair[0];
     var grade_pair = pair[1].split("/");
-    var grade = grade_pair.length === 1 ? "" : parseInt(grade_pair[0], 10)/parseInt(grade_pair[1], 10);
+    var grade = grade_pair.length === 1 ? "" : 100*(parseInt(grade_pair[0], 10)/parseInt(grade_pair[1], 10));
     ws["B" + (8 + counter)] = {
       t: 's', // t: 's' indicates the cell is a text cell
       v: assignment // v: holds the desired value
@@ -105,13 +105,13 @@ chrome.runtime.onMessage.addListener(
             var data = new Uint8Array(req.response);
             var wb = XLSX.read(data, {type:"array"});
             var categories = [
-              [["Homework", "HW", "NP"], 0.1],
+              [["Homework", "HW"], 0.01],
               [["Essay"], 0.1],
-              [["Quiz"], 0.15],
-              [["Project"], 0.15],
-              [["Mid-Term", "Midterm", "Mid-Term Exam", "Midterm Exam"], 0.2],
-              [["Final", "Final Exam"], 0.3],
-              [["Unknown", "Other"], 0.0]
+              [["Quiz","NP"], 0.005],
+              [["Project"], 0.01],
+              [["Mid-Term", "Midterm", "Mid-Term Exam", "Midterm Exam"], 0.235],
+              [["Final", "Final Exam"], 0.395],
+              [["Unknown", "Other"], 0.05]
             ];
             test(wb, categories);
           }
