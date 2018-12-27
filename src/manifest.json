@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "GradeScope-Importer",
-    "version": "0.1",
+    "name": "GradeScope-Importer Alpha",
+    "version": "0.11",
     "content_scripts": [
         {
           "matches": [
