@@ -13,4 +13,7 @@ This extension allows you to quickly get all you grades, add weights and put it 
 ## Chill with us on [Reddit!](https://www.reddit.com/r/GradeScopeImporter/)
 
 ## Screenshots
-<img align="center" src="https://github.com/DevBrandon/GradeScope-Importer/blob/master/src/icons/screenshot.png"/>
+<img align="center" src="https://github.com/DevBrandon/GradeScope-Importer/blob/master/src/icons/screenshot.png" />
+
+## QR Code
+<img align="center" src="https://github.com/DevBrandon/GradeScope-Importer/blob/master/assets/Dont be lost, know your grade!.png" width="300" />
