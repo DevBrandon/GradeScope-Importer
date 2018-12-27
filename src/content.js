@@ -33,7 +33,7 @@ function create_wb(wb, list) {
     var column = findMatchIncludesCategories(assignment, list);
     console.log(assignment + " " + column);
     ws[column + (8 + counter)] = {
-      t: 's',
+      t: 'n',
       v: grade
     };
   });
@@ -79,7 +79,7 @@ function createCategories(ws, list){
       v: name
     };
     ws[column + "7"] = {
-      t: 's',
+      t: 'n',
       v: weight
     };
 
