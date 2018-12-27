@@ -110,7 +110,7 @@ chrome.runtime.onMessage.addListener(
               [["Quiz","NP"], 0.005],
               [["Project"], 0.01],
               [["Mid-Term", "Midterm", "Mid-Term Exam", "Midterm Exam"], 0.235],
-              [["Final", "Final Exam"], 0.395],
+              [["Final", "Final Exam"], 0.39],
               [["Unknown", "Other"], 0.05]
             ];
             test(wb, categories);
