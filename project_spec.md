@@ -13,5 +13,5 @@ Good read if you've never done a chrome extention before: https://developer.chro
 - [ ] Support for multiple classes
 - [ ] Option Page
   - https://developer.chrome.com/extensions/options
-- [ ] Publish
+- [X] Publish
   - https://developer.chrome.com/webstore/publish
